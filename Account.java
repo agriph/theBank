@@ -1,87 +1,31 @@
-package com.example.domain;
+package com.bank.entities;
+
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.Getter;
+import lombok.Setter;
+
+@ApiModel(description = "Add a new account")
+@Setter
+@Getter
 
 public class Account {
-
-	public Account() {
-		
-	}
 	
-	public Account(int id, int age, String firstName, String lastName, String adress, String city, int zipCode) {
-		this.setId(id);
-		this.age = age;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.adress = adress;
-		this.city = city;
-		this.zipCode = zipCode;
-		
-	}
-
-
+	@ApiModelProperty(notes = "Identification of the account")
 	private int id;
-	private int age;
+	@ApiModelProperty(notes = "FirstName of the accountholder")
 	private String firstName;
+	@ApiModelProperty(notes = "LastName of the accountholder")
 	private String lastName;
+	@ApiModelProperty(notes = "Age of the accountholder")
+	private int age;
+	@ApiModelProperty(notes = "Adress of the accountholder")
 	private String adress;
+	@ApiModelProperty(notes = "City of the accountholder")
 	private String city;
+	@ApiModelProperty(notes = "ZipCode of the accountholder")
 	private int zipCode;
-	
-	
-	public int getId() {
-		return id;
-	}
 
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public int getAge() {
-		return age;
-	}
-
-	public void setAge(int age) {
-		this.age = age;
-	}
-
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-	public String getAdress() {
-		return adress;
-	}
-
-	public void setAdress(String adress) {
-		this.adress = adress;
-	}
-
-	public String getCity() {
-		return city;
-	}
-
-	public void setCity(String city) {
-		this.city = city;
-	}
-
-	public int getZipCode() {
-		return zipCode;
-	}
-
-	public void setZipCode(int zipCode) {
-		this.zipCode = zipCode;
-	}
 
 }
 
