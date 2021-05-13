@@ -1,31 +1,23 @@
-package com.example.entities;
+package com.bank.entities;
 
-import java.util.UUID;
-
+import java.util.Date;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
 
+@ApiModel(description = "Add a new transfer")
 @Setter
 @Getter
 
 public class Transfer {
 	
-	
-public Transfer() {
-		
-	}
-	
-	public Transfer(int account, int sum, String info) {
-		this.account = account; //id
-		this.sum = sum;
-		this.info = info;
-
-	}
-	
+	@ApiModelProperty(notes = "ID of the Account making the Transfer")
 	private int account;
+	@ApiModelProperty(notes = "Sum of Transfer")
 	private int sum;
-	private String info;
-	
-	
-	
+	@ApiModelProperty(notes = "Date and time Transfer")
+	private Date date;
+
+
 }
