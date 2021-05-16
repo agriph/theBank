@@ -1,5 +1,9 @@
 package com.bank.entities;
 
+import java.util.Date;
+import java.util.List;
+import java.util.UUID;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
@@ -12,7 +16,7 @@ import lombok.Setter;
 public class Account {
 	
 	@ApiModelProperty(notes = "Identification of the account")
-	private int id;
+	private UUID id;
 	@ApiModelProperty(notes = "FirstName of the accountholder")
 	private String firstName;
 	@ApiModelProperty(notes = "LastName of the accountholder")
@@ -25,6 +29,16 @@ public class Account {
 	private String city;
 	@ApiModelProperty(notes = "ZipCode of the accountholder")
 	private int zipCode;
+	@ApiModelProperty(notes = "Date of which the Account was created")
+	private Date date;
+	@ApiModelProperty(notes = "Date of which the Account was updated")
+	private Date update;
+	
+	private List<Transaction> transactions;
+	
+	private List<Transfer> transfers;
+	
+	private Balance balance;
 
 
 }
