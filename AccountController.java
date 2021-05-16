@@ -1,9 +1,7 @@
-package com.example.controllers;
+package com.bank.controllers;
 
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,48 +13,57 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import com.example.domain.*;
+import com.bank.entities.Account;
+import com.bank.requests.AddAccountRequest;
+import com.bank.requests.UpdateAccountRequest;
+import com.bank.services.AccountService;
+
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 
 @RestController
-@RequestMapping("bankapi/account/")
+@RequestMapping("/bankapi/account/")
 public class AccountController {
 
-	Map<Integer, Account> accounts = new HashMap<Integer, Account>();
 	@Autowired
+	private AccountService accountService;
 
 	
-	@GetMapping("/{firstName}")
-	public Account getByFirstName(@PathVariable String firstName) {
-		return accounts.get(firstName);
-		
+	@GetMapping("/")
+	@ApiOperation(
+			value = "All accounts",
+			notes = "Lists all accounts",
+			response = Account.class,
+			responseContainer = "List")
+	public Collection<Account> getAll() {
+		return accountService.getAll();
 	}
 	
 	@GetMapping("/{id}")
-	public Account getById(@PathVariable int id) {
-		return accounts.get(id);
-		
- }
+	public Account getById(@ApiParam (value = "ID of accounts", required = true) @PathVariable UUID id) {
+		return accountService.getById(id);
+	}
+	
+	@GetMapping("/{name}")
+	public Account getByName(@ApiParam(value = "Name of Accountholder", required = true) @PathVariable String firstName, String lastName) {
+	return accountService.getByName(firstName, lastName);
+	}
 	
 	@PostMapping("/")
-	public Account addAccount(@RequestBody Account newAccount) {
-		accounts.put(newAccount.getId(), newAccount);
-		return newAccount;
-		
+	public Account addNewAccount(@RequestBody AddAccountRequest request) {
+		return accountService.addAccount(request);
 	}
+		
 	
 	@PutMapping("/{id}")
-	public Account updateAccount(@PathVariable int id, @RequestBody Account updatedAccount) {
-	Account account = accounts.get(id);
-	account.setId(updatedAccount.getId());
-	account.setFirstName(updatedAccount.getFirstName());
-	account.setFirstName(updatedAccount.getFirstName());
-	return updatedAccount;
-		
+	public Account updateAccount(@PathVariable UUID id, @RequestBody UpdateAccountRequest request) {
+		return accountService.updateAccount(request, id);
 	}
+
 	
 	@DeleteMapping("/{id}")
-	public Account deleteAccount(@PathVariable int id) {
-		accounts.remove(id);
-		return null;
+	public void deleteAccount(@PathVariable UUID id) {
+		accountService.deleteAccount(id);
 	}
+
 }
