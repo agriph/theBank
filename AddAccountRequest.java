@@ -1,6 +1,13 @@
-package com.example.requests;
+package com.bank.requests;
+
+import java.util.Date;
 
 import io.swagger.annotations.*;
+import lombok.Getter;
+import lombok.Setter;
+
+@Setter
+@Getter
 
 @ApiModel(description = "model for adding a new account")
 public class AddAccountRequest {
@@ -13,38 +20,8 @@ public class AddAccountRequest {
 	private int age;
 	@ApiModelProperty(notes = "City of the Accountholder")
 	private String city;
+	@ApiModelProperty(notes = "Date of which the Account was created")
+	private Date date;
 
-	
-	public String getFirstName() {
-		return firstName;
-	}
-	
-	public String setFirstName() {
-		return this.firstName = firstName;
-	}
-	
-	public String getLastName() {
-		return lastName;
-	}
-	
-	public String setLastName() {
-		return this.lastName = lastName;
-	}
-	
-	public int getAge() {
-		return age;
-	}
-	
-	public int setAge() {
-		return this.age = age;
-	}
-	
-	public String getCity() {
-		return city;
-	}
-	
-	public String setCity() {
-		return this.city = city;
-	}
 	
 }
