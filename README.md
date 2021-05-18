@@ -5,4 +5,4 @@
 This Bank API is under developement and made as a school project. It can be used to create bank accounts that has an optional inital sum, which can then be used to make transfers and transactions that can also be deleted or altered. Each account has a balance overview that can also be manually updated.
 
 ### Technologies
-This API has been made using Eclipse, Spring Framework, Lombok and SQL Server Management Studio. It's been tested using Swagger UI and Postman.
+This API has been made using Eclipse (Java), Spring Framework, Swagger UI, Postman and SQL Server Management Studio.
