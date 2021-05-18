@@ -1,2 +1,8 @@
 # theBank
-An API for a bank where you can transfer money between different accounts,make transactions and overview your transfer/transaction history.
+#### An API for a bank where you can create an account, make transfers as well as transactions.
+
+### Information / Introduction
+This Bank API is under developement and made as a school project. It can be used to create bank accounts that has an optional inital sum, which can then be used to make transfers and transactions that can also be deleted or altered. Each account has a balance overview that can also be manually updated.
+
+### Technologies
+This API has been made using Eclipse, Spring Framework, Lombok and SQL Server Management Studio. It's been tested using Swagger UI and Postman.
